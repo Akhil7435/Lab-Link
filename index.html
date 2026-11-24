@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LabLink - Smart laboratory booking and equipment allocation portal">
+  <title>LabLink | Lab Booking & Equipment Allocation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#"><span class="brand-icon">L</span><span>Lab<span class="brand-accent">Link</span><small>LAB MANAGEMENT</small></span></a>
+    <div class="nav-label">WORKSPACE</div>
+    <button class="nav-item active" data-view="dashboard"><span>▦</span> Dashboard</button>
+    <button class="nav-item" data-view="booking"><span>▣</span> Book a Lab</button>
+    <button class="nav-item" data-view="equipment"><span>⚙</span> Equipment</button>
+    <button class="nav-item" data-view="history"><span>◷</span> My Bookings</button>
+    <div class="sidebar-bottom"><div class="avatar">ST</div><div><b>Student Portal</b><small>Dayananda Sagar University</small></div></div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div><div class="eyebrow">DSU · LABORATORY PORTAL</div><h1 id="pageTitle">Dashboard</h1></div>
+      <div class="top-actions"><span class="status-dot"></span><span class="live-label">System online</span><div class="top-avatar">ST</div></div>
+    </header>
+
+    <section class="view active" id="dashboard">
+      <div class="welcome"><div><div class="eyebrow light">YOUR CAMPUS, CONNECTED</div><h2>Good day, Student 👋</h2><p>Plan your practical sessions and get the equipment you need.</p></div><div class="welcome-mark">L</div></div>
+      <div class="stats">
+        <article class="stat-card"><div class="stat-top"><span>Available Labs</span><span class="stat-icon">⌂</span></div><strong id="availableCount">04</strong><small>Ready for booking</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Equipment Items</span><span class="stat-icon">⚙</span></div><strong id="equipmentCount">24</strong><small>Across all laboratories</small></article>
+        <article class="stat-card"><div class="stat-top"><span>My Bookings</span><span class="stat-icon">▣</span></div><strong id="bookingCount">00</strong><small>Saved on this device</small></article>
+      </div>
+      <div class="section-heading"><div><div class="eyebrow">FIND YOUR SPACE</div><h3>Explore laboratories</h3></div><button class="text-button" data-go="booking">View booking form →</button></div>
+      <div class="lab-grid" id="labCards"></div>
+      <div class="notice"><span>ⓘ</span><div><b>Before you book</b><p>Choose a lab, date and time slot. Bookings in this demo are saved in your browser on this device.</p></div></div>
+    </section>
+
+    <section class="view" id="booking">
+      <div class="intro"><div class="eyebrow">RESERVE A WORKSPACE</div><h2>Book a laboratory</h2><p>Submit your session details to reserve a lab slot.</p></div>
+      <div class="panel form-panel">
+        <form id="bookingForm">
+          <div class="form-grid">
+            <label>Student name<input id="studentName" placeholder="Enter your name" required></label>
+            <label>USN / Student ID<input id="studentId" placeholder="Enter your USN" required></label>
+            <label class="full">Select laboratory<select id="labSelect" required><option value="">Choose a laboratory</option></select></label>
+            <label>Date<input id="bookingDate" type="date" required></label>
+            <label>Time slot<select id="timeSlot" required><option value="">Choose a time slot</option><option>09:00 AM – 11:00 AM</option><option>11:00 AM – 01:00 PM</option><option>02:00 PM – 04:00 PM</option><option>04:00 PM – 06:00 PM</option></select></label>
+            <label class="full">Purpose of booking<textarea id="purpose" rows="3" placeholder="Briefly describe your practical session" required></textarea></label>
+          </div>
+          <div class="form-footer"><span>✦ Booking confirmation will appear on this page.</span><button class="primary-btn" type="submit">Confirm booking →</button></div>
+        </form>
+      </div>
+    </section>
+
+    <section class="view" id="equipment">
+      <div class="intro"><div class="eyebrow">TOOLS & RESOURCES</div><h2>Equipment allocation</h2><p>Check equipment availability before your laboratory session.</p></div>
+      <div class="toolbar"><input id="equipmentSearch" placeholder="Search equipment..."><select id="equipmentFilter"><option value="All">All laboratories</option><option>Computer Lab</option><option>Electronics Lab</option><option>Physics Lab</option><option>Chemistry Lab</option></select></div>
+      <div class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>Equipment</th><th>Laboratory</th><th>Total units</th><th>Available</th><th>Status</th></tr></thead><tbody id="equipmentRows"></tbody></table></div></div>
+      <p class="footnote">Availability shown is sample project data. Actual allocation requires a connected database and administrator workflow.</p>
+    </section>
+
+    <section class="view" id="history">
+      <div class="intro"><div class="eyebrow">YOUR ACTIVITY</div><h2>My bookings</h2><p>Review the laboratory reservations saved from this browser.</p></div>
+      <div class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>Laboratory</th><th>Date</th><th>Time slot</th><th>Student</th><th>Status</th><th></th></tr></thead><tbody id="bookingRows"></tbody></table></div><div id="emptyBookings" class="empty-state">No bookings yet. Select “Book a Lab” to make your first reservation.</div></div>
+    </section>
+    <footer>© 2026 LabLink · Smart Lab Booking & Equipment Allocation <span>Academic project demo</span></footer>
+  </main>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
